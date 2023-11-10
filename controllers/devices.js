@@ -75,6 +75,26 @@ exports.devices_create_post = async function(req, res) {
     }
     };
     
+    //Handle Vehicle update form on PUT
+exports.devices_update_put = async function (req, res) {
+    console.log(`update on id ${req.params.id} with body 
+${JSON.stringify(req.body)}`)
+    try {
+        let toUpdate = await devices.findById(req.params.id)
+        // Do updates of properties
+        if (req.body.name)
+            toUpdate.name = req.body.name;
+        if (req.body.brand) toUpdate.brand = req.body.brand;
+        if (req.body.price) toUpdate.price = req.body.price;
+        let result = await toUpdate.save();
+        console.log("Sucess " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": ${err}: Update for id ${req.params.id} 
+failed`);
+    }
+};
     
     
     
