@@ -3,10 +3,18 @@ var devices = require('../models/devices');
 exports.devices_list = function(req, res) {
 res.send('NOT IMPLEMENTED: devices list');
 };
-// for a specific devices.
-exports.devices_detail = function(req, res) {
-res.send('NOT IMPLEMENTED: devices detail: ' + req.params.id);
-};
+// for a specific Costume.
+exports.devices_detail = async function(req, res) {
+    console.log("detail" + req.params.id)
+    try {
+    result = await devices.findById( req.params.id)
+    res.send(result)
+    } catch (error) {
+    res.status(500)
+    res.send(`{"error": document for id ${req.params.id} not found`);
+    }
+    };
+    
 // Handle devices create on POST.
 exports.devices_create_post = function(req, res) {
 res.send('NOT IMPLEMENTED: devices create POST');
@@ -66,6 +74,7 @@ exports.devices_create_post = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
     };
+    
     
     
     
