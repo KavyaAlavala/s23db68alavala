@@ -10,4 +10,15 @@ a {
   background-color: aquamarine;
   width: 120px;
   }
+
+#devicesForm {
+    background-color: rgb(211, 205, 255);
+    width: 300px;
+    font-size: larger;
+  }
+  
+  h1{
+    color: yellow;
+  }
+
   

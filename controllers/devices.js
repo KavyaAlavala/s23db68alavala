@@ -148,7 +148,6 @@ exports.devices_update_Page = async function (req, res) {
     }
 };
 
-
 // Handle a delete one view with id from query
 exports.devices_delete_Page = async function (req, res) {
     console.log("Delete view for id " + req.query.id)
