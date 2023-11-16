@@ -18,12 +18,4 @@ router.get('/devices/:id', devices_controller.devices_detail);
 // GET request for list of all devices items.
 router.get('/devices', devices_controller.devices_list);
 module.exports = router;
-// API for our resources
-exports.api = function(req, res) {
-res.write('[');
-res.write('{"resource":"devices", ');
-res.write(' "verbs":["GET","PUT", "DELETE"] ');
-res.write('}');
-res.write(']')
-res.send();
-};
+
