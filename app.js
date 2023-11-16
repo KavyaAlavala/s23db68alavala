@@ -61,6 +61,8 @@ console.log("Connection to DB succeeded")});
 
 // We can seed the collection if needed on
 //server start
+
+
 async function recreateDB(){
 // Delete everything
 await devices.deleteMany();

@@ -1,0 +1,20 @@
+extends layout
+block content
+    h1= title
+    - let devicesid = toShow._id
+    - let devicesname = toShow.name
+    - let devicesbrand = toShow.brand
+    - let devicesprice = toShow.price
+    div
+        div.row
+            div(class='devicesAttr mr-3') devices ID is:
+            div #{devicesid}
+        div.row
+            div(class='devicesAttr mr-3') devices name is:
+            div #{name}
+        div.row
+            div(class='devicesAttr mr-3') devices brand is:
+            div #{brand}
+        div.row
+            div(class='devicesAttr mr-3') devices size is:
+            div #{price}

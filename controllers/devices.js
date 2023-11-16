@@ -20,9 +20,18 @@ exports.devices_create_post = function(req, res) {
 res.send('NOT IMPLEMENTED: devices create POST');
 };
 // Handle devices delete form on DELETE.
-exports.devices_delete = function(req, res) {
-res.send('NOT IMPLEMENTED: devices delete DELETE ' + req.params.id);
-};
+exports.devices_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await devices.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+    };
+    
 // Handle devices update form on PUT.
 exports.devices_update_put = function(req, res) {
 res.send('NOT IMPLEMENTED: devices update PUT' + req.params.id);
@@ -95,6 +104,19 @@ ${JSON.stringify(req.body)}`)
 failed`);
     }
 };
+// Handle a show one view with id specified by query
+exports.devices_view_one_Page = async function (req, res) {
+    console.log("single view for id " + req.query.id)
+    try {
+        result = await devices.findById(req.query.id)
+        res.render('devicesdetail', { title: 'devices Detail', toShow: result });
+    }
+    catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
+
     
     
     
