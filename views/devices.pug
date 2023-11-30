@@ -3,7 +3,7 @@ extends layout
 block content
   h1= title
   - let result = results;
-  a(class="btn btn-success" href="/Gadget/create") Create
+  a(class="btn btn-success" href="/devices/create") Create
   - var devices =[{name:"Mobile", brand:"Apple", price:200000},{name:"Laptop", brand:"HP", price:70000},{name:"Watch", brand:"Boat", price:5000}]
   div(class="container-fluid mt-3")
     div(class="row m-1")
@@ -11,7 +11,8 @@ block content
         - let destination = `/devices/update?id=${result._id}`
         div(class="col-sm-2", onclick=`buy(${index})`) #{result.name}, #{result.brand}, #{result.price}
         button.btn(class="btn-primary ml-1", onclick=`dispatch('${destination}')`) Update
-        a(class="btn btn-danger" href=`/Gadget/delete?id=${result._id}`) Delete
+        a(class="btn btn-danger" href=`/devices/delete?id=${result._id}`) Delete
+        a(class="btn btn-dark" href=`/devices/detail?id=${result._id}`) Details
         script.
           function buy(a) {
               alert(`You purchased Item ${a + 1}`)
